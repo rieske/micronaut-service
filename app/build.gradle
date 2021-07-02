@@ -27,6 +27,7 @@ dependencies {
     runtimeOnly("io.micronaut:micronaut-management")
     runtimeOnly("ch.qos.logback:logback-classic")
     runtimeOnly("org.postgresql:postgresql")
+    runtimeOnly("io.micronaut.flyway:micronaut-flyway")
 
     testImplementation("org.assertj:assertj-core")
     testImplementation("io.micronaut:micronaut-http-client")

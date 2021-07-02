@@ -9,3 +9,8 @@ datasources:
     password: ${DB_PASSWORD}
     driverClassName: ${DB_DRIVER}
     initialization-fail-timeout: 10000
+
+flyway:
+  datasources:
+    default:
+      enabled: true
