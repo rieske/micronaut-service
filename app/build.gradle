@@ -2,6 +2,16 @@ plugins {
     id("io.micronaut.application") version "1.5.0"
 }
 
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(16)
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.compilerArgs += ["-Xlint:deprecation", "-Xlint:unchecked"]
+}
+
 micronaut {
     version("3.0.0-M2")
     runtime("netty")
