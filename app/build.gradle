@@ -23,9 +23,11 @@ micronaut {
 }
 
 dependencies {
+    runtimeOnly("io.micronaut:micronaut-management")
     runtimeOnly("ch.qos.logback:logback-classic")
 
     testImplementation("org.assertj:assertj-core")
+    testImplementation("io.micronaut:micronaut-http-client")
 }
 
 application {
