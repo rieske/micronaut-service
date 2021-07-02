@@ -1,15 +1,22 @@
 package com.rieske.micronaut;
 
-import jakarta.inject.Singleton;
+import io.micronaut.context.annotation.Context;
 
+import javax.sql.DataSource;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
-@Singleton
+@Context
 class SampleService {
 
+    private final DataSource dataSource;
+
     private final Map<Integer, String> samples = new HashMap<>();
+
+    SampleService(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
 
     void addSample(int id, String value) {
         samples.put(id, value);
