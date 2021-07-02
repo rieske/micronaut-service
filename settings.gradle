@@ -1,0 +1,8 @@
+rootProject.name = "micronaut-app"
+include("app")
+
+dependencyResolutionManagement {
+    repositories {
+        mavenCentral()
+    }
+}

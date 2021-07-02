@@ -1,0 +1,38 @@
+plugins {
+    id("io.micronaut.application") version "1.5.0"
+}
+
+micronaut {
+    version("3.0.0-M2")
+    runtime("netty")
+    testRuntime("junit5")
+    processing {
+        incremental(true)
+        annotations("com.rieske.*")
+    }
+}
+
+dependencies {
+    runtimeOnly("ch.qos.logback:logback-classic")
+
+    testImplementation("org.assertj:assertj-core")
+}
+
+application {
+    mainClass.set("com.rieske.micronaut.Application")
+}
+
+tasks.register("up", Exec) {
+    dependsOn("build")
+    inputs.files(file("$rootProject.projectDir}/docker-compose.yml")).withPathSensitivity(PathSensitivity.RELATIVE)
+    workingDir(rootProject.projectDir)
+    executable("docker-compose")
+    args("up", "--build", "-d")
+}
+
+tasks.register("down", Exec) {
+    workingDir(rootProject.projectDir)
+    executable("docker-compose")
+    args("down")
+}
+
